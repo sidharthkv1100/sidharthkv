@@ -1,102 +1,222 @@
-import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Download, Github, Linkedin } from "lucide-react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Simple Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Import Google Font - Inter for a clean look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* Light gray background */
+            color: #333; /* Dark text */
+            line-height: 1.6;
+        }
 
-const skills = ["JavaScript", "React.js", "Node.js", "Tailwind CSS", "MongoDB", "Express"];
-const projects = [
-  {
-    title: "Pomodoro Clock",
-    description: "A productivity timer app built with React fulfilling all FreeCodeCamp requirements.",
-    link: "https://your-pomodoro-app-link.com",
-  },
-  {
-    title: "Quote Generator",
-    description: "Generates random motivational quotes using a public API.",
-    link: "https://your-quote-generator-link.com",
-  },
-  {
-    title: "Portfolio Website",
-    description: "This very portfolio! Built with React and Tailwind CSS.",
-    link: "#",
-  },
-];
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-export default function Portfolio() {
-  return (
-    <div className="p-6 max-w-4xl mx-auto font-sans space-y-10">
-      {/* Header */}
-      <header className="text-center space-y-2">
-        <h1 className="text-4xl font-bold">Sidharth K V</h1>
-        <p className="text-lg text-gray-600">Full Stack Developer | JavaScript Enthusiast</p>
-        <div className="flex justify-center gap-4">
-          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
-            <Github className="w-6 h-6" />
-          </a>
-          <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
-            <Linkedin className="w-6 h-6" />
-          </a>
-          <a href="/resume.pdf" download>
-            <Download className="w-6 h-6" />
-          </a>
+        header, nav, footer {
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        section {
+            background-color: white;
+            margin-top: 20px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        h1 { font-size: 2.5em; }
+        h2 { font-size: 2em; border-bottom: 2px solid #eee; padding-bottom: 5px; }
+        h3 { font-size: 1.5em; }
+
+        .profile-img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #555;
+        }
+        .social-links a:hover {
+            color: #007bff; /* A simple hover effect */
+        }
+
+        .skill-item, .project-card, .experience-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .project-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="text-white text-4xl font-bold">My Simple Portfolio</h1>
         </div>
-      </header>
+    </header>
 
-      {/* About */}
-      <section className="space-y-4">
-        <h2 className="text-2xl font-semibold">About Me</h2>
-        <p className="text-gray-700">
-          I'm a passionate full stack developer skilled in React.js and Node.js. I love building fast,
-          responsive, and accessible web applications. Currently building projects that solve real-world problems.
-        </p>
-      </section>
-
-      {/* Skills */}
-      <section className="space-y-4">
-        <h2 className="text-2xl font-semibold">Skills</h2>
-        <div className="flex flex-wrap gap-2">
-          {skills.map((skill) => (
-            <span
-              key={skill}
-              className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
-            >
-              {skill}
-            </span>
-          ))}
+    <nav class="bg-gray-800 text-white py-3">
+        <div class="container flex justify-center space-x-6">
+            <a href="#home">Home</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#resume">Resume</a>
         </div>
-      </section>
+    </nav>
 
-      {/* Projects */}
-      <section className="space-y-4">
-        <h2 className="text-2xl font-semibold">Projects</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {projects.map(({ title, description, link }) => (
-            <Card key={title} className="hover:shadow-xl transition duration-200">
-              <CardContent className="p-4 space-y-2">
-                <h3 className="text-xl font-bold">{title}</h3>
-                <p className="text-gray-700">{description}</p>
-                <a
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
-                >
-                  View Project
+    <main class="container">
+        <!-- Home Section -->
+        <section id="home" class="text-center">
+            <img src="https://placehold.co/120x120/667EEA/FFFFFF?text=JP" alt="Profile Picture" class="profile-img mx-auto">
+            <h2 class="text-3xl font-semibold mb-4">Hello, I'm Jane Doe!</h2>
+            <p class="text-gray-700 text-lg mb-6">
+                I'm a software developer with a passion for building simple and effective web solutions.
+            </p>
+            <div class="social-links flex justify-center space-x-6">
+                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                    <i data-lucide="github" class="w-7 h-7"></i>
                 </a>
-              </CardContent>
-            </Card>
-          ))}
+                <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                    <i data-lucide="linkedin" class="w-7 h-7"></i>
+                </a>
+                <a href="mailto:youremail@example.com" aria-label="Email Me">
+                    <i data-lucide="mail" class="w-7 h-7"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="text-2xl font-semibold">My Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                <div class="skill-item">
+                    <h3 class="text-xl font-medium">Frontend</h3>
+                    <p>HTML, CSS, JavaScript</p>
+                </div>
+                <div class="skill-item">
+                    <h3 class="text-xl font-medium">Backend</h3>
+                    <p>Node.js, Python</p>
+                </div>
+                <div class="skill-item">
+                    <h3 class="text-xl font-medium">Databases</h3>
+                    <p>MongoDB, SQL</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="text-2xl font-semibold">My Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                <div class="project-card">
+                    <img src="https://placehold.co/400x250/B8C1EC/4F46E5?text=Project+1" alt="Project 1 Image">
+                    <h3 class="text-xl font-medium">Simple Blog Site</h3>
+                    <p class="text-gray-600 mb-3">A basic blog platform built with HTML, CSS, and JavaScript.</p>
+                    <a href="https://github.com/yourusername/simple-blog" target="_blank" rel="noopener noreferrer" class="btn">View on GitHub</a>
+                </div>
+                <div class="project-card">
+                    <img src="https://placehold.co/400x250/B8C1EC/4F46E5?text=Project+2" alt="Project 2 Image">
+                    <h3 class="text-xl font-medium">Task Manager</h3>
+                    <p class="text-gray-600 mb-3">A simple task management application.</p>
+                    <a href="https://github.com/yourusername/task-manager" target="_blank" rel="noopener noreferrer" class="btn">View on GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="resume">
+            <h2 class="text-2xl font-semibold">My Resume</h2>
+            <p class="text-gray-700 mb-4">
+                A brief overview of my experience:
+            </p>
+            <div class="experience-item">
+                <h3 class="text-xl font-medium text-blue-700">Junior Developer</h3>
+                <p class="text-gray-800">Web Solutions Co. | 2022 - Present</p>
+                <ul class="list-disc list-inside text-gray-600 mt-2">
+                    <li>Developed front-end components.</li>
+                    <li>Assisted in bug fixing and testing.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3 class="text-xl font-medium text-blue-700">Intern</h3>
+                <p class="text-gray-800">Innovate Tech | 2021</p>
+                <ul class="list-disc list-inside text-gray-600 mt-2">
+                    <li>Learned basic web development concepts.</li>
+                    <li>Contributed to small internal projects.</li>
+                </ul>
+            </div>
+            <div class="text-center mt-6">
+                <a href="https://your-resume-link.pdf" target="_blank" rel="noopener noreferrer" class="btn bg-green-600 hover:bg-green-700">Download Full Resume</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container text-sm">
+            <p>&copy; <span id="current-year"></span> Jane Doe. All rights reserved.</p>
         </div>
-      </section>
+    </footer>
 
-      {/* Contact */}
-      <section className="space-y-4">
-        <h2 className="text-2xl font-semibold">Contact</h2>
-        <p className="text-gray-700">
-          Feel free to reach out via email: <a href="mailto:youremail@example.com" className="text-blue-600 hover:underline">youremail@example.com</a>
-        </p>
-      </section>
-    </div>
-  );
-}
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
 
+        // Get the current year for the footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
