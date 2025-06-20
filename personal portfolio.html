@@ -1,1 +1,102 @@
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Download, Github, Linkedin } from "lucide-react";
+
+const skills = ["JavaScript", "React.js", "Node.js", "Tailwind CSS", "MongoDB", "Express"];
+const projects = [
+  {
+    title: "Pomodoro Clock",
+    description: "A productivity timer app built with React fulfilling all FreeCodeCamp requirements.",
+    link: "https://your-pomodoro-app-link.com",
+  },
+  {
+    title: "Quote Generator",
+    description: "Generates random motivational quotes using a public API.",
+    link: "https://your-quote-generator-link.com",
+  },
+  {
+    title: "Portfolio Website",
+    description: "This very portfolio! Built with React and Tailwind CSS.",
+    link: "#",
+  },
+];
+
+export default function Portfolio() {
+  return (
+    <div className="p-6 max-w-4xl mx-auto font-sans space-y-10">
+      {/* Header */}
+      <header className="text-center space-y-2">
+        <h1 className="text-4xl font-bold">Sidharth K V</h1>
+        <p className="text-lg text-gray-600">Full Stack Developer | JavaScript Enthusiast</p>
+        <div className="flex justify-center gap-4">
+          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+            <Github className="w-6 h-6" />
+          </a>
+          <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+            <Linkedin className="w-6 h-6" />
+          </a>
+          <a href="/resume.pdf" download>
+            <Download className="w-6 h-6" />
+          </a>
+        </div>
+      </header>
+
+      {/* About */}
+      <section className="space-y-4">
+        <h2 className="text-2xl font-semibold">About Me</h2>
+        <p className="text-gray-700">
+          I'm a passionate full stack developer skilled in React.js and Node.js. I love building fast,
+          responsive, and accessible web applications. Currently building projects that solve real-world problems.
+        </p>
+      </section>
+
+      {/* Skills */}
+      <section className="space-y-4">
+        <h2 className="text-2xl font-semibold">Skills</h2>
+        <div className="flex flex-wrap gap-2">
+          {skills.map((skill) => (
+            <span
+              key={skill}
+              className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      {/* Projects */}
+      <section className="space-y-4">
+        <h2 className="text-2xl font-semibold">Projects</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {projects.map(({ title, description, link }) => (
+            <Card key={title} className="hover:shadow-xl transition duration-200">
+              <CardContent className="p-4 space-y-2">
+                <h3 className="text-xl font-bold">{title}</h3>
+                <p className="text-gray-700">{description}</p>
+                <a
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  View Project
+                </a>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section className="space-y-4">
+        <h2 className="text-2xl font-semibold">Contact</h2>
+        <p className="text-gray-700">
+          Feel free to reach out via email: <a href="mailto:youremail@example.com" className="text-blue-600 hover:underline">youremail@example.com</a>
+        </p>
+      </section>
+    </div>
+  );
+}
 
